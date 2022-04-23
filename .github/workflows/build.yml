@@ -41,9 +41,14 @@ jobs:
           git config --global user.name "devnoname120"
           git stash --all
           git checkout build
-          git checkout stash -- . # Force restore files
-          git rm -r --cached .
+          rm -r docs
+          rm -r Spoons
+          git status
+          # git rm -r --cached .
+          # git merge --squash --strategy-option=theirs stash --allow-unrelated-histories
+          git stash pop
           git add -f docs
           git add -f Spoons/*.zip
+          git status
           git commit --allow-empty -m "Build $GITHUB_SHA"
           git push origin build
