@@ -3,6 +3,9 @@
     "name": "AutoBTDisconnectOnSleep"
   },
   {
+    "name": "AutoDisconnectFromHotspot"
+  },
+  {
     "name": "AutoMuteOnSleep"
   }
 ]
