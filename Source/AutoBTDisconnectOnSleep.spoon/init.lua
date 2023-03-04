@@ -22,9 +22,9 @@ obj.devicesToReconnect = {}
 function obj:checkBluetoothList(rc, stdout, stderr)
 --- Filter and keep only devices containing QC45 / QC35 in the name
     local devices = hs.json.decode(stdout)
-    
+
     local devicesToDisconnect = {}
-    
+
     for _, device in ipairs(devices) do
         if string.find(device.name, "QC") or string.find(device.name, "QuietComfort") then
             print("[BT] Disconnecting: " .. device.name .. "...")
@@ -55,9 +55,9 @@ function obj:sleepWatcherCB(state)
             local t = hs.task.new("/opt/homebrew/bin/blueutil", nil, {"--connect", device.address, "--info", device.address, "--format", "json-pretty"})
             t:start()
         end
-        
+
         obj.devicesToReconnect = {}
-            
+
     end
 end
 
